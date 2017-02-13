@@ -50,6 +50,36 @@ function simpleRemap( fMods, fKeyCode, fTable )
     return false
 end
 
+
+-- local keyCommon = {}
+-- keyCommon:new = function(keyLabel)
+--                     local obj = {}
+--                     obj.keyLabel = keyLabel
+--                     obj.keyCode = keymap[keyLabel]
+--                     --0xf->keyDown, 0xf0->keyUp, 0xf00->keyRepeat
+--                     obj.keyState =  0x0                    
+--                     obj.rawModBit = 0x0
+--                     obj:analyzeMod = function( event )
+--                                         local modTbl = event:getFlags()
+--                                         if modTbl["cmd"] then self.rawModBit = bit32.bor(self.rawModBit, 0xf) end
+--                                         if modTbl["alt"] then self.rawModBit = bit32.bor(self.rawModBit, 0xf0) end
+--                                         if modTbl["shift"] then self.rawModBit = bit32.bor(self.rawModBit,0xf00) end
+--                                         if modTbl["ctrl"] then self.rawModBit = bit32.bor(self.rawModBit,0xf000) end
+--                                         if modTbl["fn"] then self.rawModBit = bit32.bor(self.rawModBit, 0xf0000) end
+--                                     end
+                    
+--                     obj:update =    function( event )
+--                                         if hs.eventtap.event.types.keyDown == event:getKeyCode() then
+
+--                                         elseif hs.eventtap.event.types.keyUp == event:getKeyCode() then
+
+--                                         else
+--                                             return false
+--                                         end
+--                                     end
+--                     return obj
+--                 end
+
 pressLeft = false
 pressRight = false
 pressMiddle = false
