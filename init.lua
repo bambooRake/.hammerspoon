@@ -144,7 +144,7 @@ eventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.t
         local keyUp = (e:getType() == hs.eventtap.event.types.keyUp)
         local mouseMv = (e:getType() == hs.eventtap.event.types.mouseMoved)
         if pressedHyper then
-            if keyCode == 0x5e then
+            if keyCode == 0x72 then
                 if keyUp then
                     --hs.alert.show("OFF")
                     pressedHyper = false
@@ -193,7 +193,7 @@ eventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.t
                 end          
             end
         else
-            if keyCode == 0x5e then
+            if keyCode == 0x72 then
                 if keyDown then
                     --hs.alert.show("ON")
                     pressedHyper = true
@@ -204,16 +204,17 @@ eventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.t
         end
 
         --IME設定ここから
-        if keyCode == 0x5d then
+        if keyCode == 0x68 then
 
             if keyDown then
                 pressedIME = pressedIME + 1
                 if pressedIME == 2 then
-                    hs.eventtap.event.newKeyEvent({}, 104, true):post()
-                    hs.timer.usleep(200000)
-                    hs.eventtap.event.newKeyEvent({}, 104, false):post()
+                    -- hs.eventtap.event.newKeyEvent({}, 104, true):post()
+                    -- hs.timer.usleep(200000)
+                    -- hs.eventtap.event.newKeyEvent({}, 104, false):post()
                     hs.alert.show("あ")
                     hs.timer.doAfter(0.1, function() hs.alert.closeAll(3) end)
+                    return false --そのまま、かなキーのダウンを送る
                 end
             end
 
@@ -227,6 +228,7 @@ eventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.t
                     pressedIME = 0
                 elseif pressedIME > 1 then
                     pressedIME = 0
+                    return false --そのまま、かなキーのアップを送る
                 end
             end
 
